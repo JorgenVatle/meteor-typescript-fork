@@ -17,8 +17,10 @@ function getBooleanEnvironmentVariable(key: string): boolean | undefined {
   if (!value) {
     return undefined;
   }
-  // 0 or false => false
-  return !["0", "false"].includes(value);
+  if (['false', '0'].includes(value)) {
+    return false;
+  }
+  return true;
 }
 
 const failOnErrors = !!getBooleanEnvironmentVariable(
