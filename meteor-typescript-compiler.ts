@@ -208,10 +208,11 @@ function getDiagnosticMessage(
       diagnostic.messageText,
       "\n"
     );
-    return `${getRelativeFileName(
-      diagnostic.file.fileName,
-      sourceRoot ?? ""
-    )} (${line + 1},${character + 1}): ${message}`;
+    const filename = getRelativeFileName(
+        diagnostic.file.fileName,
+        sourceRoot ?? ""
+    );
+    return `${bold.cyan(filename)} (${bold.yellow(line + 1)}:${bold.yellow(character + 1)}): ${message}`;
   }
   return ts.flattenDiagnosticMessageText(
     diagnostic.messageText,
