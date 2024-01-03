@@ -5,10 +5,10 @@ const COMPILER_VERSION = "0.3.18";
 const TYPESCRIPT_VERSION = "5.3.2";
 
 Package.describe({
-  name: "refapp:meteor-typescript-compiler",
+  name: "jorgenvatle:meteor-typescript-compiler",
   version: COMPILER_VERSION,
   summary: "A Typescript compiler plugin for Meteor",
-  git: "https://github.com/Meteor-Community-Packages/meteor-typescript-compiler",
+  git: "https://github.com/JorgenVatle/meteor-typescript-fork",
   documentation: "README.md",
 });
 
@@ -29,6 +29,6 @@ Package.onUse(function (api) {
 Package.onTest(function (api) {
   api.use("tinytest");
   api.use("typescript");
-  api.use("refapp:meteor-typescript-compiler");
+  api.use("jorgenvatle:meteor-typescript-compiler");
   api.mainModule("tests.ts");
 });
