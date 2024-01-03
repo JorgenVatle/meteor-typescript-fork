@@ -6,7 +6,7 @@ Package.describe({
   name: "jorgenvatle:meteor-typescript",
   version: MY_VERSION,
   summary: "A Typescript compiler plugin for Meteor",
-  git: "https://github.com/Meteor-Community-Packages/meteor-typescript",
+  git: "https://github.com/JorgenVatle/meteor-typescript-fork",
   documentation: "README.md",
 });
 
