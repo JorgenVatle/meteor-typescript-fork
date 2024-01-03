@@ -212,7 +212,8 @@ function getDiagnosticMessage(
         diagnostic.file.fileName,
         sourceRoot ?? ""
     );
-    return `${bold.cyan(filename)} (${bold.yellow(line + 1)}:${bold.yellow(character + 1)}): ${reset(message)}`;
+    const fileIndex = reset(`(${bold.yellow(line + 1)}:${bold.yellow(character + 1)})`)
+    return `${bold.cyan(filename)} ${fileIndex}: ${reset(message)}`;
   }
   return ts.flattenDiagnosticMessageText(
     diagnostic.messageText,
