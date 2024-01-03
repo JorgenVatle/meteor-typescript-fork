@@ -25,6 +25,10 @@ const failOnErrors = !!getBooleanEnvironmentVariable(
   "TYPESCRIPT_FAIL_ON_COMPILATION_ERRORS"
 );
 
+const emitTypeErrors = getBooleanEnvironmentVariable(
+    'TYPESCRIPT_EMIT_TYPE_ERRORS'
+) ?? true;
+
 const sourceMapOverride = getBooleanEnvironmentVariable("TYPESCRIPT_SOURCEMAP");
 
 export function setTraceEnabled(enabled: boolean) {
@@ -448,7 +452,10 @@ export class MeteorTypescriptCompilerImpl extends BabelCompiler {
   writeDiagnosticMessage(message: string, category: ts.DiagnosticCategory) {
     switch (category) {
       case ts.DiagnosticCategory.Error:
-        return error(message);
+        if (emitTypeErrors) {
+          error(message);
+        }
+        return;
       case ts.DiagnosticCategory.Warning:
       case ts.DiagnosticCategory.Suggestion:
       case ts.DiagnosticCategory.Message:
