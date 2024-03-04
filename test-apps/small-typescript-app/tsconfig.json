@@ -23,7 +23,7 @@
     "noFallthroughCasesInSwitch": false,
 
     /* Module Resolution Options */
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
       /* Support absolute /imports/* with a leading '/' */
       "/*": ["*"]
@@ -32,7 +32,7 @@
     "resolveJsonModule": true,
     "types": ["node", "mocha"],
     "esModuleInterop": true,
-    "preserveSymlinks": true,
+    "preserveSymlinks": true
   },
   "exclude": ["./.meteor/**", "./packages/**"]
 }
