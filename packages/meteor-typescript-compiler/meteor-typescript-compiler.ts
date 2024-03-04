@@ -32,6 +32,7 @@ const emitTypeErrors = getBooleanEnvironmentVariable(
 ) ?? true;
 
 const sourceMapOverride = getBooleanEnvironmentVariable("TYPESCRIPT_SOURCEMAP");
+const meteorLocalDir = process.env.METEOR_LOCAL_DIR || '.meteor/local'
 
 export function setTraceEnabled(enabled: boolean) {
   traceEnabled = enabled;
@@ -258,7 +259,7 @@ export class MeteorTypescriptCompilerImpl extends BabelCompiler {
     | { sourceMap: MeteorCompiler.SourceMap; pathInPackage: string }
     | undefined = undefined;
 
-  private cacheRoot = ".meteor/local/.typescript-incremental";
+  private cacheRoot = `${meteorLocalDir}/.typescript-incremental`;
 
   constructor() {
     super({});
@@ -368,7 +369,7 @@ export class MeteorTypescriptCompilerImpl extends BabelCompiler {
     // so get us back to the source dir version of the directory (it’s the same content, just symlinked so no harm done)
     // see tools/cli/commands.js for details
     const cacheRootRelativeSource = this.cacheRoot.substring(
-      this.cacheRoot.indexOf("/.meteor/local")
+      this.cacheRoot.indexOf(`/${meteorLocalDir}`)
     );
 
     const rootOutDir = ts.sys.resolvePath(
