@@ -193,7 +193,7 @@ function isBare(inputFile: MeteorCompiler.InputFile): boolean {
 
 function getRelativeFileName(filename: string, sourceRoot: string): string {
   if (sourceRoot && filename.startsWith(sourceRoot)) {
-    return filename.substring(sourceRoot.length + 1);
+    return Path.relative(sourceRoot, filename);
   }
   return filename;
 }
