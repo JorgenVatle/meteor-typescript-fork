@@ -369,12 +369,10 @@ export class MeteorTypescriptCompilerImpl extends BabelCompiler {
     // but Typescript wants the buildInfo file and outDir to be in a stable location relative the source dir
     // so get us back to the source dir version of the directory (it’s the same content, just symlinked so no harm done)
     // see tools/cli/commands.js for details
-    const cacheRootRelativeSource = this.cacheRoot.substring(
-      this.cacheRoot.indexOf(`/${meteorLocalDir}`)
-    );
+    const cacheRootRelativeSource = Path.relative(sourceRoot, this.cacheRoot);
 
     const rootOutDir = ts.sys.resolvePath(
-      `${sourceRoot}${cacheRootRelativeSource}/v2cache`
+        Path.join(sourceRoot, cacheRootRelativeSource, 'v2cache'),
     );
 
     const outDir = `${rootOutDir}/out`;
