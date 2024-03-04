@@ -2,7 +2,8 @@
   "name": "small-typescript-app",
   "private": true,
   "scripts": {
-    "start": "cross-env METEOR_PACKAGE_DIRS='../../packages' METEOR_LOCAL_DIR='/tmp/.meteor-local/small-typescript-app' meteor run",
+    "start": "cross-env METEOR_PACKAGE_DIRS='../../packages' meteor run",
+    "start:custom-local-dir": "cross-env METEOR_LOCAL_DIR='/tmp/.meteor-local/small-typescript-app' npm start",
     "test": "meteor test --once --driver-package meteortesting:mocha",
     "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
     "visualize": "meteor --production --extra-packages bundle-visualizer"
