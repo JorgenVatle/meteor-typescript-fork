@@ -1,5 +1,6 @@
 import * as ts from "typescript";
 import { bold, dim, reset } from "chalk";
+import * as Path from 'path'
 
 /**
  * compiler-console (could not figure out how to load from separate file/module)
@@ -32,7 +33,7 @@ const emitTypeErrors = getBooleanEnvironmentVariable(
 ) ?? true;
 
 const sourceMapOverride = getBooleanEnvironmentVariable("TYPESCRIPT_SOURCEMAP");
-const meteorLocalDir = process.env.METEOR_LOCAL_DIR || '.meteor/local'
+const meteorLocalDir = Path.resolve(process.env.METEOR_LOCAL_DIR || '.meteor/local');
 
 export function setTraceEnabled(enabled: boolean) {
   traceEnabled = enabled;
